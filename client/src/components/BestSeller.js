@@ -81,12 +81,25 @@ const BestSeller = () => {
         <Slider {...settings}>
           {products?.map((e) => (
             <Product
-              key={e.id}
+              key={e._id}
               productData={e}
               isNew={activedTab === 1 ? false : true}
+              pid={e._id}
             />
           ))}
         </Slider>
+      </div>
+      <div className="flex gap-4 mt-4">
+        <img
+          src="https://digital-world-2.myshopify.com/cdn/shop/files/banner2-home2_2000x_crop_center.png?v=1613166657"
+          alt="banner1"
+          className="flex-1 object-contain"
+        />
+        <img
+          src="https://digital-world-2.myshopify.com/cdn/shop/files/banner1-home2_2000x_crop_center.png?v=1613166657"
+          alt="banner2"
+          className="flex-1 object-contain"
+        />
       </div>
     </div>
   );

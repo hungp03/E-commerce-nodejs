@@ -34,7 +34,8 @@ const fn = async (product) => {
     sold: Math.round(Math.random() * 100),
     image: product?.images,
     color: color,
-    thumb: product?.thumb
+    thumb: product?.thumb,
+    totalRatings: Math.round(Math.random() * 5)
   });
 };
 

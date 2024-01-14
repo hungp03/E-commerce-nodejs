@@ -1,3 +1,5 @@
+import icons from "./icons";
+const { FaRegStar, FaStar } = icons;
 export const createSlug = (str) =>
   str
     .toLowerCase()
@@ -7,3 +9,15 @@ export const createSlug = (str) =>
     .join("-");
 
 export const formatMoney = (money) => Number(money.toFixed(1)).toLocaleString();
+
+export const renderStarFromNumber = (num) => {
+  //Ex: 4 stars = [1,1,1,1,0]
+  let stars = [];
+  for (let i = 0; i < +num; i++) {
+    stars.push(<FaStar color="orange"/>);
+  }
+  for (let i = 5; i > +num; i--) {
+    stars.push(<FaRegStar color="orange"/>);
+  }
+  return stars;
+};

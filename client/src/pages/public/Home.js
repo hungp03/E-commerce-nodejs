@@ -16,7 +16,7 @@ const Home = () => {
           <BestSeller />
         </div>
       </div>
-      <div className="w-full h-[500px]"></div>
+      <div className="w-full h-[300px]"></div>
     </>
   );
 };
