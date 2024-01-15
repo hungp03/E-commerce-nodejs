@@ -42,7 +42,7 @@ const Product = ({ productData, isNew }) => {
                 : "https://res.cloudinary.com/dmu5sii2t/image/upload/v1704793355/samples/ecommerce/wqhr032xf0zmarb7l7r6.png"
             }
             alt=""
-            className="absolute top-0 left-0 w-[70px] h-[24px] top-[-10px] left-[150px] object-cover"
+            className="absolute w-[70px] h-[24px] top-[-10px] left-[208px] object-cover"
           />
         </div>
         <div className="flex flex-col gap-1 mt-[15px] items-start w-full">

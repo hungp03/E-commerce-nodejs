@@ -1,7 +1,7 @@
 //useState để lưu giá trị
 //useEffect để gọi api
 import React from "react";
-import { Banner, Sidebar, BestSeller } from "../../components";
+import { Banner, Sidebar, BestSeller, DealDaily } from "../../components";
 
 const Home = () => {
   return (
@@ -9,7 +9,7 @@ const Home = () => {
       <div className="w-main flex">
         <div className="flex flex-col gap-5 w-[25%] flex-auto">
           <Sidebar />
-          <span>Deal daily</span>
+          <DealDaily />
         </div>
         <div className="flex flex-col gap-5 pl-5 w-[75%] flex-auto">
           <Banner />
