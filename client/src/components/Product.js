@@ -19,7 +19,7 @@ const Product = ({ productData, isNew }) => {
         }}
         className="w-full border p-[15px] flex flex-col items-center"
       >
-        <div className="w-full relative">
+        <div className="w-full relative flex items-center justify-center">
           {showOption && (
             <div className="absolute bottom-[-10px] flex justify-center left-0 right-0 gap-2 animate-slide-top">
               <SelectOption key={productData._id + '1'} icon={<FaEye />} />
@@ -42,7 +42,7 @@ const Product = ({ productData, isNew }) => {
                 : "https://res.cloudinary.com/dmu5sii2t/image/upload/v1704793355/samples/ecommerce/wqhr032xf0zmarb7l7r6.png"
             }
             alt=""
-            className="absolute w-[70px] h-[24px] top-[-10px] left-[208px] object-cover"
+            className="absolute w-[70px] h-[24px] top-[-10px] right-[-10px] object-cover"
           />
         </div>
         <div className="flex flex-col gap-1 mt-[15px] items-start w-full">

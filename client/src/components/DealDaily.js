@@ -1,10 +1,10 @@
 import React, { useEffect, useState, memo } from "react";
 import icons from "../ultils/icons";
-import { apigetProducts } from "../apis/product";
+import { apiGetProducts } from "../apis/product";
 import { formatMoney, renderStarFromNumber } from "../ultils/helper";
 import { Countdown } from "./";
 
-let idInterval
+let idInterval;
 const { FaStar, IoMenu } = icons;
 const DealDaily = () => {
   //Lưu giá trị của dealDaily
@@ -17,16 +17,33 @@ const DealDaily = () => {
   const [expireTime, setExpireTime] = useState(false);
 
   const fetchDealDaily = async () => {
-    const response = await apigetProducts({
+    const response = await apiGetProducts({
       limit: 1,
-      page: Math.round(Math.random() * 15),
+      page: Math.round(Math.random() * 10),
       totalRatings: 5,
     });
     // console.log(response);
-    if (response.success) setDealDaily(response.products[0]);
-    setHour(23);
-    setMinute(59);
-    setSecond(59);
+    if (response.success) {
+      setDealDaily(response.products[0]);
+      
+      const now = new Date();
+      const tomorrow = new Date(now);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      tomorrow.setHours(0, 0, 0, 0);
+      const remainingTime = tomorrow - now;
+
+      const seconds = Math.floor((remainingTime / 1000) % 60);
+      const minutes = Math.floor((remainingTime / 1000 / 60) % 60);
+      const hours = Math.floor((remainingTime / (1000 * 60 * 60)) % 24);
+
+      setHour(hours);
+      setMinute(minutes);
+      setSecond(seconds);
+    } else {
+      setHour(0);
+      setMinute(59);
+      setSecond(59);
+    }
   };
 
   //Lấy dữ liệu từ apiGetProducts qua fetchDealDaily
@@ -35,7 +52,7 @@ const DealDaily = () => {
   //   }, []);
 
   useEffect(() => {
-    idInterval && clearInterval(idInterval)
+    idInterval && clearInterval(idInterval);
     fetchDealDaily();
   }, [expireTime]);
 

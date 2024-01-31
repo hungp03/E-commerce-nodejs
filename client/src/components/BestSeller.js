@@ -1,15 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { apigetProducts } from "../apis/product";
-import { Product } from "./";
-import Slider from "react-slick";
-
-const settings = {
-  dots: false,
-  infinite: false,
-  speed: 500,
-  slidesToShow: 3,
-  slidesToScroll: 1,
-};
+import { apiGetProducts } from "../apis/product";
+import { CustomSlider } from "./";
+import { getNewProducts } from "../store/products/asyncActions";
+import { useDispatch, useSelector } from "react-redux";
 
 const tabs = [
   {
@@ -20,39 +13,30 @@ const tabs = [
     id: 2,
     name: "new arrivals",
   },
-  // {
-  //   id: 3,
-  //   name: "tablet",
-  // },
 ];
 
 const BestSeller = () => {
   const [bestSellers, setBestSeller] = useState(null);
-  const [newProducts, setnewProducts] = useState(null);
   const [activedTab, setActivedTab] = useState(1);
   const [products, setProducts] = useState(null);
-
+  const dispatch = useDispatch();
+  const { newProducts } = useSelector((state) => state.products);
+  
   const fetchProducts = async () => {
     //https://topdev.vn/blog/xu-ly-bat-dong-bo-voi-promise-all-trong-javascript/
-    const response = await Promise.all([
-      apigetProducts({ sort: "-sold" }),
-      apigetProducts({ sort: "-createdAt" }),
-    ]);
-    //console.log(response);
-    if (response[0]?.success) {
-      setBestSeller(response[0].products);
-      setProducts(response[0].products);
+    const response = await apiGetProducts({ sort: "-sold" });
+    
+    if (response?.success) {
+      setBestSeller(response.products);
+      setProducts(response.products);
     }
-
-    if (response[1]?.success) setnewProducts(response[1].products);
-
-    setProducts(response[0].products);
   };
 
   //truyền tham số thứ 2 của useEffect() là 1 hàm rỗng [] để chỉ gọi 1 lần khi render component
   useEffect(() => {
     fetchProducts();
-  }, []);
+    dispatch(getNewProducts());
+  }, [dispatch]);
 
   useEffect(() => {
     if (activedTab === 1) {
@@ -68,7 +52,7 @@ const BestSeller = () => {
         {tabs.map((e) => (
           <span
             key={e.id}
-            className={`font-semibold capitalize cursor-pointer ${
+            className={`font-semibold uppercase cursor-pointer ${
               activedTab === e.id ? "text-black" : "text-gray-400"
             }`}
             onClick={() => setActivedTab(e.id)}
@@ -77,17 +61,8 @@ const BestSeller = () => {
           </span>
         ))}
       </div>
-      <div className="mt-4 mx-[-10px]">
-        <Slider {...settings}>
-          {products?.map((e) => (
-            <Product
-              key={e._id}
-              productData={e}
-              isNew={activedTab === 1 ? false : true}
-              pid={e._id}
-            />
-          ))}
-        </Slider>
+      <div className="mt-4 mx-[-10px] ">
+        <CustomSlider products={products} activedTab={activedTab} />
       </div>
       <div className="flex gap-4 mt-4">
         <img

@@ -1,5 +1,7 @@
 import { FaPhone, FaCartShopping } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
+import { GrNext } from "react-icons/gr";
+
 import {
   FaHome,
   FaRegStar,
@@ -20,5 +22,6 @@ const icons = {
   FaEye,
   IoMenu,
   FaHeart,
+  GrNext
 };
 export default icons;
