@@ -1,3 +1,4 @@
 node_modules/
 .env
 E-commerce-crawl-data.zip
+crawl-data/

@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import { formatMoney, renderStarFromNumber } from "../ultils/helper";
 import { SelectOption } from "./";
 import icons from "../ultils/icons";
+import { Link } from "react-router-dom";
+import path from "../ultils/path";
+
 const { FaEye, IoMenu, FaHeart } = icons;
 const Product = ({ productData, isNew }) => {
   const [showOption, setShowOption] = useState(false);
 
   return (
     <div className="w-full h-auto text-base px-[10px]">
-      <div
+      <Link
         onMouseEnter={(e) => {
           e.stopPropagation();
           setShowOption(true);
@@ -17,6 +20,7 @@ const Product = ({ productData, isNew }) => {
           e.stopPropagation();
           setShowOption(false);
         }}
+        to={`/${path.PRODUCT_DETAIL}/${productData?._id}/${productData.title}`}
         className="w-full border p-[15px] flex flex-col items-center"
       >
         <div className="w-full relative flex items-center justify-center">
@@ -54,7 +58,7 @@ const Product = ({ productData, isNew }) => {
             {formatMoney(productData?.price)} &#8363;
           </span>
         </div>
-      </div>
+      </Link>
     </div>
   );
 };

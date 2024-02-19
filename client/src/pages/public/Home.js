@@ -7,7 +7,7 @@ import {
   BestSeller,
   DealDaily,
   FeatureProduct,
-  CustomSlider,
+  CustomSlider
 } from "../../components";
 import { useSelector } from "react-redux";
 import icons from '../../ultils/icons'
@@ -17,7 +17,7 @@ const {GrNext} = icons
 const Home = () => {
   const { newProducts } = useSelector((state) => state.products);
   const { _categories } = useSelector((state) => state.app);
-  console.log(_categories);
+  // console.log(_categories);
   return (
     <>
       <div className="w-main flex">
@@ -48,16 +48,15 @@ const Home = () => {
         <div className="flex flex-wrap ">
           {_categories?.filter(e => e.brand.length > 0).map((e) => 
             <div className="w-1/3 p-2" key={e._id}>
-
               <div className="border flex gap-4 min-h-[180px]">
                 <img src={e?.image} alt="" className="w-[144px] h-[130px] flex-1 object-contain"/>
                 <div className="flex-1">
                   <h4 className="font-semibold uppercase text-gray-700">{e?.title}</h4>
                   <ul className="text-sm">
                     {e?.brand?.map(item => 
-                      <span className="flex gap-1 items-center text-gray-500">
+                      <span key={item} className="flex gap-1 items-center text-gray-500">
                         <GrNext/>
-                        <li key={item}>{item}</li>
+                        <li>{item}</li>
                       </span>
                       )}
                   </ul>
@@ -71,9 +70,8 @@ const Home = () => {
         <h2 className="text-[20px] uppercase font-semibold py-[10px] border-b-4 border-main">
           Blog Post
         </h2>
-        
         </div>
-      <div className="w-full h-[300px] bg-main">FOOTER</div>
+      
     </>
   );
 };

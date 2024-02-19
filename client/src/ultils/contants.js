@@ -18,7 +18,7 @@ export const navigation = [
   {
     id: 4,
     value: "OUR SERVICES",
-    path: `/${path.SERVICES}`,
+    path: `/${path.OUR_SERVICES}`,
   },
   {
     id: 5,
