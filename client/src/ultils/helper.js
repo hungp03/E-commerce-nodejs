@@ -1,5 +1,6 @@
 import icons from "./icons";
 const { FaRegStar, FaStar } = icons;
+
 export const createSlug = (str) =>
   str
     .toLowerCase()

@@ -3,10 +3,13 @@ import logo from "../assets/logo.png";
 import icons from "../ultils/icons";
 import { Link } from "react-router-dom";
 import path from "../ultils/path";
+
+const { FaPhone, MdEmail, FaUserCircle, FaCartShopping } = icons;
+
 const Header = () => {
-  const { FaPhone, MdEmail, FaUserCircle, FaCartShopping } = icons;
   return (
     <div className="flex justify-between w-main h-[110px] py-[35px]">
+      
       <Link to={`/${path.HOME}`}>
         <img src={logo} alt="logo" className="w-[234px] object-contain" />
       </Link>

@@ -11,6 +11,7 @@ import {
   FaHeart,
 } from "react-icons/fa";
 import { IoMenu } from "react-icons/io5";
+
 const icons = {
   FaPhone,
   MdEmail,
@@ -24,4 +25,5 @@ const icons = {
   FaHeart,
   GrNext
 };
+
 export default icons;

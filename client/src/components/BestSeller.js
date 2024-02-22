@@ -16,16 +16,16 @@ const tabs = [
 ];
 
 const BestSeller = () => {
+
   const [bestSellers, setBestSeller] = useState(null);
   const [activedTab, setActivedTab] = useState(1);
   const [products, setProducts] = useState(null);
   const dispatch = useDispatch();
   const { newProducts } = useSelector((state) => state.products);
-  
+
   const fetchProducts = async () => {
     //https://topdev.vn/blog/xu-ly-bat-dong-bo-voi-promise-all-trong-javascript/
     const response = await apiGetProducts({ sort: "-sold" });
-    
     if (response?.success) {
       setBestSeller(response.products);
       setProducts(response.products);
@@ -48,6 +48,7 @@ const BestSeller = () => {
 
   return (
     <div>
+
       <div className="flex text-[20px] gap-8 pb-2 border-b-4 border-main">
         {tabs.map((e) => (
           <span
@@ -61,9 +62,11 @@ const BestSeller = () => {
           </span>
         ))}
       </div>
+
       <div className="mt-4 mx-[-10px] ">
         <CustomSlider products={products} activedTab={activedTab} />
       </div>
+
       <div className="flex gap-4 mt-4">
         <img
           src="https://digital-world-2.myshopify.com/cdn/shop/files/banner2-home2_2000x_crop_center.png?v=1613166657"
@@ -76,6 +79,7 @@ const BestSeller = () => {
           className="flex-1 object-contain"
         />
       </div>
+      
     </div>
   );
 };

@@ -6,6 +6,7 @@ import { Countdown } from "./";
 
 let idInterval;
 const { FaStar, IoMenu } = icons;
+
 const DealDaily = () => {
   //Lưu giá trị của dealDaily
   const [dealDaily, setDealDaily] = useState(null);
@@ -81,6 +82,7 @@ const DealDaily = () => {
 
   return (
     <div className="w-full border flex-auto">
+
       <div className="flex items-center justify-between p-4 w-full">
         <span className="flex-1 flex justify-center">
           <FaStar color="red" size={20} />
@@ -90,6 +92,7 @@ const DealDaily = () => {
         </span>
         <span className="flex-1"></span>
       </div>
+
       <div className="w-full flex items-center flex-col pt-8 px-4 gap-2">
         <img
           src={
@@ -107,6 +110,7 @@ const DealDaily = () => {
           {(dealDaily && formatMoney(dealDaily?.price)) || 0} &#8363;
         </span>
       </div>
+
       <div className="px-4 mt-4">
         <div className="flex justify-center gap-2 items-center">
           <Countdown unit={"Hours"} number={hour} />
@@ -121,6 +125,7 @@ const DealDaily = () => {
           <span>Options</span>
         </button>
       </div>
+      
     </div>
   );
 };

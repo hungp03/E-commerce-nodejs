@@ -3,6 +3,7 @@ import { ProductCard } from "./";
 import { apiGetProducts } from "../apis";
 
 const FeatureProduct = () => {
+
   const [products, setProducts] = useState(null);
 
   const fetchProduct = async () => {
@@ -22,6 +23,7 @@ const FeatureProduct = () => {
       <h2 className="text-[20px] uppercase font-semibold py-[10px] border-b-4 border-main">
         Feature Product
       </h2>
+
       <div className="flex flex-wrap mt-4 mx-[-10px]">
         {products?.map((e) => (
           <ProductCard
@@ -33,6 +35,7 @@ const FeatureProduct = () => {
           />
         ))}
       </div>
+
       <div className="flex justify-between">
         <img
           src="https://digital-world-2.myshopify.com/cdn/shop/files/banner1-bottom-home2_b96bc752-67d4-45a5-ac32-49dc691b1958_600x.jpg?v=1613166661"
@@ -55,6 +58,7 @@ const FeatureProduct = () => {
           alt=""
         />
       </div>
+      
     </div>
   );
 };

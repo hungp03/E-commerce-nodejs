@@ -2,9 +2,11 @@ import React, { memo } from "react";
 import icons from "../ultils/icons";
 
 const { MdEmail } = icons;
+
 const Footer = () => {
   return (
     <div className="w-full">
+
       <div className="flex items-center justify-center w-full h-[100px] bg-main">
         <div className="w-main flex items-center justify-between">
           <div className="flex flex-col text-gray-200 flex-1">
@@ -25,6 +27,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+
       <div className="flex items-center justify-center w-full h-[400px] bg-gray-700 text-white text-[13px]">
         <div className="w-main flex">
           <div className="flex-2 flex flex-col gap-2">
@@ -73,6 +76,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      
     </div>
   );
 };
